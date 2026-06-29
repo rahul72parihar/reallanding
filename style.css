@@ -523,6 +523,28 @@ footer {
 .footer-top nav { display: flex; gap: 26px; }
 .footer-top nav a { font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.6); }
 .footer-phone { font-size: 13px; color: var(--gold); font-weight: 600; }
+
+.rera-block {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 26px;
+  margin-bottom: 26px;
+}
+.rera-tag {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.rera-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 26px 48px;
+}
+.rera-grid div { display: flex; flex-direction: column; gap: 4px; }
+.rera-grid span { font-size: 11px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.5px; }
+.rera-grid strong { font-size: 12.5px; color: rgba(255,255,255,0.8); font-weight: 500; letter-spacing: 0.3px; }
+
 .disclaimer { font-size: 11.5px; line-height: 1.8; max-width: 900px; margin-bottom: 16px; color: rgba(255,255,255,0.4); }
 .copy { font-size: 12px; }
 
