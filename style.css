@@ -569,8 +569,8 @@ footer {
   .nav-toggle { display: flex; }
   .overview, .location { grid-template-columns: 1fr; }
   .highlight-grid, .price-grid { grid-template-columns: repeat(2, 1fr); }
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: 200px 200px 200px; }
-  .g-tall { grid-row: span 1; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 220px); }
+  .g-tall, .g-wide { grid-row: span 1; grid-column: span 1; }
   .hero h1 { font-size: 42px; }
   section h2 { font-size: 30px; }
   .loc-list { grid-template-columns: 1fr; }
