@@ -208,8 +208,27 @@
     <p class="center enquire-sub fade-up">A limited number of pre-launch registrations are being accepted. Our team will get in touch shortly after your enquiry.</p>
     <form class="enquiry-form fade-up" onsubmit="return false;">
       <input type="text" placeholder="Full Name" required>
-      <input type="tel" placeholder="Phone Number" required>
-      <input type="email" placeholder="Email Address">
+      <div class="phone-row">
+        <select class="country-code">
+          <option value="+91" selected>🇮🇳 +91</option>
+          <option value="+971">🇦🇪 +971</option>
+          <option value="+966">🇸🇦 +966</option>
+          <option value="+974">🇶🇦 +974</option>
+          <option value="+968">🇴🇲 +968</option>
+          <option value="+973">🇧🇭 +973</option>
+          <option value="+965">🇰🇼 +965</option>
+          <option value="+1">🇺🇸 +1</option>
+          <option value="+44">🇬🇧 +44</option>
+          <option value="+65">🇸🇬 +65</option>
+          <option value="+61">🇦🇺 +61</option>
+          <option value="+49">🇩🇪 +49</option>
+          <option value="+33">🇫🇷 +33</option>
+          <option value="+81">🇯🇵 +81</option>
+          <option value="+86">🇨🇳 +86</option>
+        </select>
+        <input type="tel" placeholder="Phone Number" required>
+      </div>
+      <input type="email" placeholder="Email Address" required>
       <select>
         <option value="">Preferred Configuration</option>
         <option>2 BHK — From ₹1.76 Cr</option>
@@ -222,14 +241,18 @@
     </form>
     <div class="contact-block fade-up">
       <p>For more information, contact <strong>Parikshith S</strong></p>
-      <p><a href="tel:8431323966">84313 23966</a></p>
+      <p><a href="tel:8431323966">84313 23966</a> &nbsp;·&nbsp; <a href="mailto:info@embassysprings.com">info@embassysprings.com</a></p>
     </div>
   </section>
 
   <footer>
     <div class="footer-top">
       <div class="logo">EMBASSY SPRINGS</div>
-      <a href="tel:8431323966" class="footer-phone">📞 Parikshith S · 84313 23966</a>
+      <div class="footer-phone">
+        <span>Parikshith S</span>
+        <a href="tel:8431323966">📞 84313 23966</a>
+        <a href="mailto:info@embassysprings.com">✉ info@embassysprings.com</a>
+      </div>
       <nav>
         <a href="#estate">Estate</a>
         <a href="#amenities">Amenities</a>
@@ -247,6 +270,11 @@
       </div>
     </div>
     <p class="disclaimer">Disclaimer: This page is shared by an authorized marketing associate and is for informational purposes only; it is not an official developer communication. All renderings, images and layouts are indicative/conceptual. Prices, sizes and specifications are subject to change without notice. Please verify all details directly with the developer before making any purchase decision. The information provided, including brochures and marketing materials, is for informative reasons only and does not constitute a booking, selling, an offer for sale, or an invitation to buy a unit in any of the projects featured; neither the information nor the projects' compliance have been confirmed by RERA. Regarding the compliance actions taken against these projects, please refer to the official RERA website; this page is merely for informational purposes.</p>
+    <div class="legal-links">
+      <a href="terms.html">Terms &amp; Conditions</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="disclaimer.html">Disclaimer</a>
+    </div>
     <p class="copy">© 2026 Embassy Springs Pre-Launch Info Page</p>
   </footer>
 

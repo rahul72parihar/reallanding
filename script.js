@@ -1,8 +1,10 @@
 // Navbar background on scroll
 const navbar = document.querySelector('.navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 40);
-});
+if (navbar) {
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+}
 
 // Fade-up on scroll
 const faders = document.querySelectorAll('.fade-up');
@@ -32,20 +34,23 @@ const mobileNav = document.querySelector('.mobile-nav');
 const navBackdrop = document.querySelector('.nav-backdrop');
 
 function closeMobileNav() {
+  if (!navToggle) return;
   navToggle.classList.remove('open');
   mobileNav.classList.remove('open');
   navBackdrop.classList.remove('open');
   document.body.classList.remove('nav-open');
 }
 
-navToggle.addEventListener('click', () => {
-  const isOpen = mobileNav.classList.toggle('open');
-  navToggle.classList.toggle('open', isOpen);
-  navBackdrop.classList.toggle('open', isOpen);
-  document.body.classList.toggle('nav-open', isOpen);
-});
+if (navToggle && mobileNav && navBackdrop) {
+  navToggle.addEventListener('click', () => {
+    const isOpen = mobileNav.classList.toggle('open');
+    navToggle.classList.toggle('open', isOpen);
+    navBackdrop.classList.toggle('open', isOpen);
+    document.body.classList.toggle('nav-open', isOpen);
+  });
 
-navBackdrop.addEventListener('click', closeMobileNav);
+  navBackdrop.addEventListener('click', closeMobileNav);
+}
 
 // Smooth-scroll for in-page anchors
 document.querySelectorAll('a[href^="#"]').forEach(link => {
