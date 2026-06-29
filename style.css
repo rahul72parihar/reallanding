@@ -90,6 +90,71 @@ ul { list-style: none; }
 }
 .nav-cta:hover { background: var(--gold); color: var(--black); }
 
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 30px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 200;
+}
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background: #fff;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.mobile-nav {
+  position: fixed;
+  top: 0; right: -100%;
+  width: 78%;
+  max-width: 320px;
+  height: 100vh;
+  background: var(--black);
+  z-index: 150;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 28px;
+  padding: 40px;
+  transition: right 0.4s ease;
+}
+.mobile-nav.open { right: 0; }
+
+.nav-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 140;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.nav-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.mobile-nav a {
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.mobile-nav .btn-gold {
+  margin-top: 14px;
+  text-align: center;
+}
+body.nav-open { overflow: hidden; }
+
 /* Hero */
 .hero {
   position: relative;
@@ -478,20 +543,72 @@ footer {
 .sticky-cta:hover { background: #c9a866; }
 
 @media (max-width: 1000px) {
-  .nav-links { display: none; }
+  .nav-links, .nav-cta { display: none; }
+  .nav-toggle { display: flex; }
   .overview, .location { grid-template-columns: 1fr; }
   .highlight-grid, .price-grid { grid-template-columns: repeat(2, 1fr); }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: 200px 200px 200px; }
   .g-tall { grid-row: span 1; }
-  .hero h1 { font-size: 40px; }
+  .hero h1 { font-size: 42px; }
   section h2 { font-size: 30px; }
   .loc-list { grid-template-columns: 1fr; }
+  section { padding: 80px 6%; }
+}
+
+@media (max-width: 760px) {
+  .footer-top { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .footer-top nav { flex-wrap: wrap; gap: 16px 22px; }
+  .location-map iframe { height: 280px; }
 }
 
 @media (max-width: 600px) {
   .highlight-grid, .price-grid, .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-rows: repeat(4, 180px); }
+  .g-tall, .g-wide { grid-column: span 1; grid-row: span 1; }
   .stat-grid { grid-template-columns: 1fr; }
-  body { padding-bottom: 56px; }
+
+  .navbar { padding: 16px 6%; }
+  .logo { font-size: 15px; }
+  .logo span { font-size: 8px; }
+
+  .hero-content { padding: 0 6%; }
+  .eyebrow { font-size: 10.5px; margin-bottom: 16px; }
+  .hero h1 { font-size: 32px; line-height: 1.22; margin-bottom: 16px; }
+  .hero-sub { font-size: 14px; margin-bottom: 26px; }
+  .btn-gold, .btn-outline { padding: 14px 26px; font-size: 11px; }
+  .scroll-indicator { display: none; }
+
+  section { padding: 64px 6%; }
+  section h2 { font-size: 25px; }
+  .tag { font-size: 11px; letter-spacing: 2px; }
+
+  .marquee-track span { font-size: 10.5px; padding: 0 18px; }
+
+  .overview-text p, .location-text p { font-size: 14px; }
+  .stat-box { padding: 26px 20px; }
+  .stat-box strong { font-size: 26px; }
+
+  .highlight-card { padding: 32px 22px; }
+  .price-card { padding: 30px 22px; }
+  .price-grid { gap: 16px; }
+
+  .loc-list { gap: 18px; }
+  .location-map iframe { height: 240px; }
+
+  .accordion { margin-top: 40px; }
+  .acc-head { font-size: 14.5px; padding: 20px 2px; }
+
+  .enquiry-form { max-width: 100%; }
+  .enquire-sub { margin-bottom: 36px; }
+
+  .sticky-cta { font-size: 11.5px; padding: 14px; }
+  .disclaimer { font-size: 11px; }
+  .gallery { padding: 0 6% 64px; }
+}
+
+@media (max-width: 380px) {
+  .hero h1 { font-size: 28px; }
+  .loc-list { grid-template-columns: 1fr; }
 }
 
 body { padding-bottom: 56px; }
