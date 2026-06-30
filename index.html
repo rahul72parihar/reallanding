@@ -256,23 +256,17 @@
     <form class="enquiry-form fade-up" onsubmit="return false;">
       <input type="text" placeholder="Full Name" required>
       <div class="phone-row">
-        <select class="country-code" name="country-code" aria-label="Country code">
-          <option value="+91" selected>IN +91</option>
-          <option value="+971">AE +971</option>
-          <option value="+966">SA +966</option>
-          <option value="+974">QA +974</option>
-          <option value="+968">OM +968</option>
-          <option value="+973">BH +973</option>
-          <option value="+965">KW +965</option>
-          <option value="+1">US +1</option>
-          <option value="+44">UK +44</option>
-          <option value="+65">SG +65</option>
-          <option value="+61">AU +61</option>
-          <option value="+49">DE +49</option>
-          <option value="+33">FR +33</option>
-          <option value="+81">JP +81</option>
-          <option value="+86">CN +86</option>
-        </select>
+        <div class="cc-select" id="ccSelect">
+          <button type="button" class="cc-trigger" aria-haspopup="listbox" aria-expanded="false">
+            <span class="cc-trigger-text">IN +91</span>
+            <span class="cc-arrow">▾</span>
+          </button>
+          <input type="hidden" name="country_code" id="ccValue" value="+91">
+          <div class="cc-dropdown">
+            <input type="text" class="cc-search" placeholder="Search country or code…" autocomplete="off">
+            <ul class="cc-list" role="listbox"></ul>
+          </div>
+        </div>
         <input type="tel" placeholder="Phone Number" required>
       </div>
       <input type="email" placeholder="Email Address" required>
