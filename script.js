@@ -274,6 +274,21 @@ if (ccSelect) {
   const ccSearch = ccSelect.querySelector('.cc-search');
   const ccList = ccSelect.querySelector('.cc-list');
 
+  // Move the dropdown panel to <body> so it escapes any ancestor's
+  // transform-induced stacking context (e.g. the .fade-up animation),
+  // which would otherwise trap its z-index and let later siblings paint over it.
+  document.body.appendChild(ccDropdown);
+
+  function positionDropdown() {
+    const rect = ccTrigger.getBoundingClientRect();
+    let left = rect.left;
+    const maxLeft = window.innerWidth - ccDropdown.offsetWidth - 12;
+    if (left > maxLeft) left = Math.max(12, maxLeft);
+    ccDropdown.style.position = 'fixed';
+    ccDropdown.style.top = `${rect.bottom + 8}px`;
+    ccDropdown.style.left = `${left}px`;
+  }
+
   function renderList(filter = '') {
     const q = filter.trim().toLowerCase();
     const matches = COUNTRIES.filter(c =>
@@ -302,7 +317,9 @@ if (ccSelect) {
   }
 
   function openCcDropdown() {
+    positionDropdown();
     ccSelect.classList.add('open');
+    ccDropdown.classList.add('open');
     ccTrigger.setAttribute('aria-expanded', 'true');
     ccSearch.value = '';
     renderList();
@@ -311,6 +328,7 @@ if (ccSelect) {
 
   function closeCcDropdown() {
     ccSelect.classList.remove('open');
+    ccDropdown.classList.remove('open');
     ccTrigger.setAttribute('aria-expanded', 'false');
   }
 
@@ -323,7 +341,17 @@ if (ccSelect) {
   ccSearch.addEventListener('click', (e) => e.stopPropagation());
 
   document.addEventListener('click', (e) => {
-    if (!ccSelect.contains(e.target)) closeCcDropdown();
+    if (!ccSelect.contains(e.target) && !ccDropdown.contains(e.target)) closeCcDropdown();
+  });
+
+  // Close on page scroll to avoid mobile compositing/paint glitches
+  // (does not fire for internal .cc-list scrolling, which doesn't bubble to window)
+  window.addEventListener('scroll', () => {
+    if (ccSelect.classList.contains('open')) closeCcDropdown();
+  }, { passive: true });
+
+  window.addEventListener('resize', () => {
+    if (ccSelect.classList.contains('open')) closeCcDropdown();
   });
 
   document.addEventListener('keydown', (e) => {
